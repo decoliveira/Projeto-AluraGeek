@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
+:root {
+    --primary-color: #ff7b72;
+    --secondary-color: #ffb86c;
+    --background-color: #282a36;
+    --highlight-color: #ffb86c;
+    --text-color: #f8f8f2;
+    --accent-color: #50fa7b;
+    --main-font: "Domine", serif;
+}
+
+/* ----------- GENERAL STYLES */
+body {
+    background-color: var(--background-color);
+    font-family: var(--main-font);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+.button--primary,
+.button--secondary {
+    font-family: var(--main-font);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition-duration: .3s; /* for hover effect */
+}
+
+.button--primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.button--primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.button--secondary {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+    padding: .8em 3.2em;
+    border: 2px solid var(--primary-color);
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.button--secondary:hover {
+    background-color: var(--highlight-color);
+}
+
+/* outline is still there, for accessibility, but less intrusive in the layout */
+input:focus, 
+select:focus,
+textarea:focus {
+    outline: 1px var(--text-color);
+}
+
+.input__text,
+.input__textfield {
+    font-size: 16px;
+    color: var(--highlight-color);
+    font-family: var(--main-font);
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+}
+
+.input__text::placeholder,
+.input__textfield::placeholder {
+    color: var(--highlight-color);
+}
+
+.input__validation-message {
+    color: var(--primary-color);
+    font-size: 12px;
+    align-self: flex-start;
+    display:inline-block;
+    margin-top: .4em;
+}
+
+.input__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input__field--label {
+    font-size: 12px;
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    padding: 1em 1em .3em;
+    border-radius: 5px 5px 0 0;
+}
+
+.input__field--content {
+    border-radius: 0 0 5px 5px;
+    padding: 0.5em 0.7em;
+}
+
+.input__textfield {
+    padding: 1em 0.8em 1.5em;
+}
+
+.input--invalid {
+    border-color: var(--primary-color);
+}
+
+/* ----------- HEADER */
+.header__container {
+    background-color: var(--text-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.header__logo {
+    width: 100px;
+}
+
+.header__searchbox {
+    display: none;
+    background-color: var(--background-color);
+    border: none;
+    border-radius: 20px;
+    padding: 1em;
+    width: 40%;
+    font-family: var(--main-font);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.header__searchbox::placeholder {
+    background: url('img/search-placeholder.png') no-repeat right / 22px;
+    color: var(--highlight-color);
+}
+
+/* style when search box is visible on mobile */
+.header__searchbox--mobile {
+    display: block;
+    order: 3;
+    width: 90%;
+    margin: 1em auto 0;
+}
+
+.header__admin {
+    padding: .8em 1em;
+}
+
+/* ----------- BANNER */
+.banner {
+    background: url(img/banner.jpg) no-repeat center / cover;
+    height: 192px;
+    position: relative;
+    /* add a shadow to the image so the white text becomes more visible */
+    box-shadow: inset 0 0 0 400px rgba(0, 0, 0, 0.25);
+}
+
+.banner__content {
+    bottom: 0;
+    position: absolute;
+    padding: 1em;
+    color: var(--text-color);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%); /* Gradiente do preto para o transparente com uma transição mais suave */
+    width: 100%; /* Certifique-se de que o gradiente cobre toda a largura do banner */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra no texto para aumentar a legibilidade */
+}
+
+.banner__title {
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra no texto para aumentar a legibilidade */
+}
+
+.banner__text {
+    font-weight: 600;
+    margin: 0.5em 0 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra no texto para aumentar a legibilidade */
+}
+
+
+
+/* ----------- PRODUCTS GALLERY */
+.gallery {
+    padding: 1em;
+    color: var(--text-color);
+}
+
+.gallery__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.gallery__title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.gallery__anchor,
+.item__anchor {
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.gallery__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.item__card--visibility {
+    display: none;
+}
+
+.item__image {
+    width: 100%;
+    cursor: pointer;
+}
+
+.item__name {
+    font-weight: 500;
+    margin-top: .6em;
+}
+
+.item__price {
+    font-size: 16px;
+    font-weight: 700;
+    margin: .6em 0
+}
+
+/* ----------- FOOTER */
+.footer__container {
+    background-color: var(--background-color);
+    padding: 1em;
+    text-align: center;
+}
+
+.footer__list {
+    padding: 1em 0;
+}
+
+.footer__item {
+    margin-bottom: 1em;
+}
+
+.footer__anchor{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* ----------- CONTACT US */
+.contact {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5em;
+}
+
+.contact__form > .input__wrapper:nth-child(2) {
+    margin: 1em 0 .5em;
+}
+
+.form__message {
+    visibility: hidden;
+    transition: .5s;
+}
+
+.form__message--success,
+.form__message--error {
+    visibility: visible;
+    background-color: var(--text-color);
+    padding: .3em;
+    margin: .5em 0;
+    text-align: center;    
+}
+
+.form__message--success {
+    border: 1px solid var(--accent-color);
+}
+
+.form__message--error {
+    border: 1px solid var(--primary-color);
+}
+
+.contact__button {
+    align-self: flex-start;
+}
+
+/* ----------- DEVELOPER */
+.developer {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2em;
+    padding: 2em;
+}
+
+.developer__contact {
+    color: var(--background-color);
+}
+
+.developer__contact:hover {
+    color: var(--primary-color);
+}
+
+
+@media screen and (min-width: 768px) {
+    .button--secondary {
+        padding: .8em 4.5em;
+    }
+
+    /* ----------- HEADER */
+    .header__container {
+        padding: 1em 2em;
+        flex-wrap: nowrap;
+    }
+
+    .header__searchbox {
+        display: block;
+        margin: 0 auto 0 2em;
+    }
+
+    .header__search-icon {
+        display: none;
+    }
+
+    /* ----------- BANNER */
+    .banner {
+        height: 352px;
+    }
+
+    .banner__content {
+        padding: 2em;
+    }
+    
+    .banner__title {
+        font-size: 52px;
+    }
+    
+    .banner__text {
+        font-weight: 700;
+        font-size: 22px;
+    }
+
+    /* ----------- PRODUCTS GALLERY */
+    .gallery {
+        padding: 2em;
+    }
+
+    .gallery__anchor, 
+    .item__anchor {
+        font-size: 16px;
+    }
+
+    .gallery__items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* ----------- FOOTER */
+    .footer__container {
+        display: grid;
+        grid-template-areas: 
+            "logo contact"
+            "links contact";
+        grid-template-columns: 1fr 2fr;
+        column-gap: 3em;
+        padding: 2em;
+    }
+
+    .footer__logo {
+        grid-area: logo;
+    }
+
+    .footer__list {
+        grid-area: links;
+        text-align: left;
+    }
+
+    .footer__item {
+        margin-bottom: 2em;
+    }
+
+    .footer__item:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact {
+        grid-area: contact;
+    }
+
+    /* ----------- DEVELOPER */
+    /* combining the first 2 p elements in a single line */
+    .developer p:nth-child(-n+2) {
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .button--primary {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .button--secondary {
+        padding: 1em 4.5em;
+        font-weight: 400;
+    }
+    
+    .header__container,
+    .banner__content,
+    .gallery,
+    .footer__container {
+        padding: 2em 7em;
+    }
+
+    /* ----------- HEADER */
+    .header__logo {
+        width: 100%;
+    }
+
+    .header__searchbox {
+        width: 30%;
+    }
+
+    /* ----------- BANNER */
+    .banner {
+        margin-bottom: 2em;
+    }
+
+    /* ----------- PRODUCTS GALLERY */
+    .gallery__items {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .gallery__title {
+        font-size: 32px;
+    }
+
+    /* two more items are visible in larger screens */
+    .item__card--visibility {
+        display: block;
+    }
+
+    /* ----------- FOOTER */
+    .footer__container {
+        grid-template-areas: "logo links contact";
+        grid-template-columns: 1fr 1fr 2fr;
+        column-gap: 0;
+        padding: 3em 7em;
+    }
+
+    .footer__logo {
+        align-self: flex-start;
+    }
+}
